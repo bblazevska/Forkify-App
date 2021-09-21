@@ -26,6 +26,7 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
+    console.log(`LOAD RECIPE : ${state.recipe}`);
   } catch (err) {
     throw err;
   }
@@ -52,15 +53,20 @@ export const loadSearchResults = async function (query) {
 };
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
+  console.log(state.search.page);
   const start = [page - 1] * state.search.resultsPerPage; // 0;
   const end = page * state.search.resultsPerPage; // 9;
+  console.log(start, end);
+  console.log(state.search.results);
+  console.log(state.search.results.slice(start, end));
   return state.search.results.slice(start, end);
 };
 
 export const updateServings = function (newServings) {
-  state.recipe.ingredients.forEach(ing => {
-    ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
-    //newQt = oldQt * newServings / oldServings //
-  });
-  state.recipe.servings = newServings;
+  console.log(`FROM UPDATE SERVINGS: ${state.recipe}`);
+  // state.recipe.ingredients.forEach(ing => {
+  //   ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
+  //newQt = oldQt * newServings / oldServings //
+  // });
+  // state.recipe.servings = newServings;
 };

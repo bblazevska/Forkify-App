@@ -14,15 +14,17 @@ export default class View {
   }
 
   update(data) {
+    console.log(data);
     this._data = data;
+    console.log(this._data);
     const newMarkup = this._generateMarkup();
 
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
-
+    console.log(`FROM UPDATE METHOD ----- : ${this._data}`);
     newElements.forEach((newEl, i) => {
-      const curEl = curElements[i];
+      const curEl = this._data[i];
       // Update changed TEXT
       if (
         !newEl.isEqualNode(curEl) &&

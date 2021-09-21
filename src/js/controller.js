@@ -16,6 +16,7 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
 
     // 0. Update results view to mark selected search result
+    console.log(model.getSearchResultsPage());
     recipeView.update(model.getSearchResultsPage());
 
     // 1. Loading recipe
@@ -25,7 +26,7 @@ const controlRecipes = async function () {
     console.log(model.state.recipe);
     recipeView.render(model.state.recipe);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     recipeView.renderError();
   }
 };
