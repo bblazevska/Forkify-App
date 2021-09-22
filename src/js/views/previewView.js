@@ -11,7 +11,7 @@ class PreviewView extends View {
            this._data.id === id ? 'preview__link--active' : ''
          }" href="#${this._data.id}">
             <figure class="preview__fig">
-               <img src=${this._data.image} alt="food image" />
+               <img src=${this._data.image} crossorigin="anonymous" alt="food image" />
             </figure>
             <div class="preview__data">
                <h4 class="preview__title">${this._data.title}</h4>
